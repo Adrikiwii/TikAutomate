@@ -11,14 +11,21 @@
     <div id="rep"></div>
     <a id="loginTikTok" href="">Continue with TikTok</a>
     <script>
-      const clientId = "sbaw6p4l7ya31c98xm";
-      const redirectUri = "https://adrikiwii.github.io/TikAutomate/";
-      const responseType = "code";
-      const scope = "user.info.basic";
-      const csrfState = Math.random().toString(36).substring(2);
 
-      const url = `https://www.tiktok.com/v2/auth/authorize/?client_id=${clientId}&scope=${scope}&response_type=${responseType}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${csrfState}`
-      document.getElementById("loginTikTok").href = url;
+      function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
+        const baseUrl = "https://www.tiktok.com/v2/auth/authorize/";
+        const params = new URLSearchParams();
+        params.append("client_key", clientId);
+        params.append("redirect_uri", redirectUri);
+        params.append("scope", scope);
+        params.append("response_type", "code");
+        if (state) {
+          params.append("state", state);
+        }
+
+        const authUrl = `${baseUrl}?${params.toString()}`;
+        return authUrl;
+      }
       function getURL() {
         const data = {
           url: document.getElementById("url").value,
@@ -53,6 +60,11 @@
             console.log(result);
           });
       }
+      const clientId = "sbaw6p4l7ya31c98xm";
+      const redirectUri = "https://adrikiwii.github.io/TikAutomate/";
+      const scope = "user.info.basic,video.list";
+
+      document.getElementById("loginTikTok").href = generateTikTokAuthUrl(clientId, redirectUri, scope, state);
     </script>
   </body>
 </html>
