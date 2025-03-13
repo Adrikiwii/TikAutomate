@@ -47,7 +47,7 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
         console.log(result);
       });
   }
-  // get token 
+  // get token
   function getToken(url)
   {
     var xhr = new XMLHttpRequest();
