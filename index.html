@@ -9,8 +9,17 @@
     <input id="url" />
     <button id="btn" onclick="getURL()">Submit</button>
     <div id="rep"></div>
-    <a href="https://www.tiktok.com/v2/auth/authorize/">Continue with TikTok</a>
+    <a id="loginTikTok" href="">Continue with TikTok</a>
     <script>
+      const clientId = "sbaw6p4l7ya31c98xm";
+      const redirectUri = "https://adrikiwii.github.io/TikAutomate/";
+      const responseType = "code";
+      const scope = "YOUR_SCOPE";
+      document.getElementById(
+        "loginTikTok"
+      ).href = `https://www.tiktok.com/v2/auth/authorize/?client_id=${clientId}&redirect_uri=${encodeURIComponent(
+        redirectUri
+      )}&response_type=${responseType}&scope=${scope}`;
       function getURL() {
         const data = {
           url: document.getElementById("url").value,
