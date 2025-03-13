@@ -14,12 +14,11 @@
       const clientId = "sbaw6p4l7ya31c98xm";
       const redirectUri = "https://adrikiwii.github.io/TikAutomate/";
       const responseType = "code";
-      const scope = "YOUR_SCOPE";
-      document.getElementById(
-        "loginTikTok"
-      ).href = `https://www.tiktok.com/v2/auth/authorize/?client_id=${clientId}&redirect_uri=${encodeURIComponent(
-        redirectUri
-      )}&response_type=${responseType}&scope=${scope}`;
+      const scope = "user.info.basic";
+      const csrfState = Math.random().toString(36).substring(2);
+
+      const url = `https://www.tiktok.com/v2/auth/authorize/?client_id=${clientId}&scope=${scope}&response_type=${responseType}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${csrfState}`
+      document.getElementById("loginTikTok").href = url;
       function getURL() {
         const data = {
           url: document.getElementById("url").value,
