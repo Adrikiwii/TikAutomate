@@ -48,23 +48,12 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
       });
   }
 
-  function getToken(url, headers, data)
+  function getToken(url)
   {
-    fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: data
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Response:', data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-  }
+    fetch(url, {method: 'post'})
+    .then(res => res.json())
+    .then(json => {
+        res.send(json);
+        console.log(json);
+    });
+}
