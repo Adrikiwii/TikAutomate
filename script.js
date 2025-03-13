@@ -48,4 +48,18 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
       });
   }
 
-  
+  function getToken(url, headers, data)
+  {
+    fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: data
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  }

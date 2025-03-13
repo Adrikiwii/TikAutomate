@@ -14,7 +14,19 @@
         const url = new URL(window.location.href);
         const code = url.search.replace("?code=","")
         console.log(code);
-        //search
+        const requestUrl = 'https://open.tiktokapis.com/v2/oauth/token/';
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Cache-Control': 'no-cache'
+        };
+        const data = new URLSearchParams({
+            client_key: 'sbaw6p4l7ya31c98xm',
+            client_secret: 'ShEFuXUPlYnD8JJY55aoVHAvRMBca1ni',
+            code: code,
+            grant_type: 'authorization_code',
+            redirect_uri: 'https://adrikiwii.github.io/TikAutomate/connect'
+        });
+        getToken(requestUrl,headers,data);
     </script>
 </body>
 </html>
