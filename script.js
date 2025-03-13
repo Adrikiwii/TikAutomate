@@ -54,12 +54,17 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
         method: 'POST',
         headers: headers,
         body: data
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Response:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Response:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
   }
