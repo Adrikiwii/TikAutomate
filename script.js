@@ -50,10 +50,10 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
   // get token 
   function getToken(url)
   {
-    fetch(url, {method: 'post'})
-    .then(res => res.json())
-    .then(json => {
-        res.send(json);
-        console.log(json);
-    });
+    new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+    value: value
+    }));
 }
