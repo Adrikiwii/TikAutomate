@@ -47,3 +47,5 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
         console.log(result);
       });
   }
+
+  

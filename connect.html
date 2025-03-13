@@ -10,5 +10,11 @@
     <input id="url" />
     <button id="btn" onclick="getURL()">Submit</button>
     <div id="rep"></div>
+    <script>
+        const url = new URL(window.location.href);
+        const code = url.search.replace("?code=","")
+        console.log(code);
+        //search
+    </script>
 </body>
 </html>
