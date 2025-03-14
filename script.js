@@ -50,7 +50,7 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
 
   function getUser(accessToken)
   {
-    fetch("https://open.tiktokapis.com/v2/post/publish/creator_info/query/", {
+    fetch("https://cors-anywhere.herokuapp.com/https://open.tiktokapis.com/v2/post/publish/creator_info/query/", {
       method: "POST",
       headers: {
         'Authorization': 'Bearer ' + accessToken,
