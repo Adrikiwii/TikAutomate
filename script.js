@@ -47,12 +47,21 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
         console.log(result);
       });
   }
-  // get token
-  function getToken(url)
+
+  function getUser(accessToken)
   {
-    fetch(url, {method: 'post'})
-        .then(res => res.json())
-        .then(json => {
-            console.log(json);
-    });
-}
+    fetch("https://open.tiktokapis.com/v2/post/publish/creator_info/query/", {
+      method: "POST",
+      headers: {
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type': 'application/json; charset=UTF-8'
+      }
+    }).then((response) => {
+      return response.json()
+    }).then((result) => {
+      console.log(result.creator_avatar_url);
+      console.log(result.creator_username);
+    })
+  }
+
+
