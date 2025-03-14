@@ -59,9 +59,8 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
     }).then((response) => {
       return response.json()
     }).then((result) => {
-        console.log(result);
-      //console.log(result.creator_avatar_url);
-      //console.log(result.display_name);
+      console.log(result.data.user.avatar_url);
+      console.log(result.data.user.display_name);
     })
   }
 
