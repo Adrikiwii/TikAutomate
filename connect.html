@@ -14,30 +14,23 @@
         const url = new URL(window.location.href);
         const code = url.search.replace("?code=","").replace("&scopes=user.info.basic","");
         console.log(code);
-        const clientKey = "sbaw6p4l7ya31c98xm"
-        const clientSecret = "ShEFuXUPlYnD8JJY55aoVHAvRMBca1ni"
-        const grantType = 'authorization_code';  // ou 'client_credentials' selon votre cas d'utilisation
-        const redirectUri = 'https://adrikiwii.github.io/TikAutomate/connect';  // Si nécessaire
-        // URL de l'API TikTok pour obtenir le token
-        const urlRequest = 'https://open.tiktokapis.com/v2/oauth/token/';
+        // URL de votre serveur backend
+        const backendUrl = 'http://votre-serveur.com/get-token.php';
+
+        // Code d'autorisation (vous devez obtenir ce code lors de l'authentification de l'utilisateur)
 
         // Paramètres de la requête
-        const params = new URLSearchParams();
-        params.append('client_key', clientKey);
-        params.append('client_secret', clientSecret);
-        params.append('grant_type', grantType);
-        if (grantType === 'authorization_code') {
-            params.append('code', code);
-            params.append('redirect_uri', redirectUri);
-        }
+        const params = {
+            code: code
+        };
 
-        // Faire la requête POST
-        fetch(urlRequest, {
+        // Faire la requête POST à votre serveur backend
+        fetch(backendUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-        body: params
+        body: new URLSearchParams(params)
         })
         .then(response => response.json())
         .then(data => {
