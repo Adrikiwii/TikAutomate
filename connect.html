@@ -11,7 +11,7 @@
     <button id="btn" onclick="getURL()">Submit</button>
     <div id="rep"></div>
     <p id="token"></p>
-    <button onclick="">test</button>
+    <button onclick="test()">test</button>
     <script>
         let url = decodeURI(window.location.href);
         const code = url.replace("https://adrikiwii.github.io/TikAutomate/connect?code=","").replace("&scopes=user.info.basic%2Cvideo.publish","");
@@ -40,7 +40,7 @@
             body: params
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => document.getElementById("token").innerHTML = data.access_token)
         .catch(error => console.error('Erreur:', error));
 
         function test(){
