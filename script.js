@@ -47,7 +47,7 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
         console.log(result);
       });
   }
-
+    // get user info
   function getUser(accessToken)
   {
     fetch("https://cors-anywhere.herokuapp.com/https://open.tiktokapis.com/v2/post/publish/creator_info/query/", {
