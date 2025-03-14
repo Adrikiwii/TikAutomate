@@ -12,11 +12,13 @@
     <div id="rep"></div>
     <script>
         const url = new URL(window.location.href);
-        const code = url.search.replace("?code=","").replace("&scopes=user.info.basic","");
+        const code = decodeURI(url).search.replace("?code=","").replace("&scopes=user.info.basic","");
         const clientKey = 'sbaw6p4l7ya31c98xm';
         const clientSecret = 'ShEFuXUPlYnD8JJY55aoVHAvRMBca1ni';
         const redirectUri = 'https://adrikiwii.github.io/TikAutomate/connect';
         console.log(code);
+        
+        
         // URL de votre serveur backend
         // const backendUrl = 'https://freestreaming.free.nf/tiktok.php';
 
