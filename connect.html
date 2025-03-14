@@ -11,8 +11,9 @@
     <button id="btn" onclick="getURL()">Submit</button>
     <div id="rep"></div>
     <script>
-        const url = new URL(window.location.href);
-        const code = decodeURI(url).search.replace("?code=","").replace("&scopes=user.info.basic","");
+        let url = decodeURI(window.location.href);
+        
+        const code = url.replace("https://adrikiwii.github.io/TikAutomate/connect?code=","").replace("&scopes=user.info.basic","");
         const clientKey = 'sbaw6p4l7ya31c98xm';
         const clientSecret = 'ShEFuXUPlYnD8JJY55aoVHAvRMBca1ni';
         const redirectUri = 'https://adrikiwii.github.io/TikAutomate/connect';
