@@ -40,9 +40,7 @@
             body: params
         })
         .then(response => response.json())
-        .then(data => () => {
-            document.getElementById("token").innerHTML = data.access_token;
-        })
+        .then(data => document.getElementById("token").innerHTML = data.access_token)
         .catch(error => console.error('Erreur:', error));
     </script>
 </body>
