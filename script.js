@@ -51,9 +51,10 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
   function getUser(accessToken)
   {
     fetch("https://cors-anywhere.herokuapp.com/https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url,display_name", {
-      method: "GET",
+      method: 'GET',
       headers: {
-        'Authorization': 'Bearer ' + accessToken
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type': 'application/json',
       }
     }).then((response) => {
       return response.json()
