@@ -50,17 +50,16 @@ function generateTikTokAuthUrl(clientId, redirectUri, scope, state = null) {
     // get user info
   function getUser(accessToken)
   {
-    fetch("https://cors-anywhere.herokuapp.com/https://open.tiktokapis.com/v2/post/publish/creator_info/query/", {
-      method: "POST",
+    fetch("https://cors-anywhere.herokuapp.com/https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url,display_name", {
+      method: "GET",
       headers: {
-        'Authorization': 'Bearer ' + accessToken,
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Authorization': 'Bearer ' + accessToken
       }
     }).then((response) => {
       return response.json()
     }).then((result) => {
       console.log(result.creator_avatar_url);
-      console.log(result.creator_username);
+      console.log(result.display_name);
     })
   }
 
